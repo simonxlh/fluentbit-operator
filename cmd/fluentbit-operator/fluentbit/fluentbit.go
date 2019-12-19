@@ -427,6 +427,9 @@ func newFluentBitDaemonSet(cr *fluentBitDeploymentConfig) *extensionv1.DaemonSet
 			Labels:    cr.Labels,
 		},
 		Spec: extensionv1.DaemonSetSpec{
+			Selector: metav1.LabelSelector{
+				MatchLabels: cr.Labels,
+			},
 			Template: corev1.PodTemplateSpec{
 				ObjectMeta: metav1.ObjectMeta{
 					Labels: cr.Labels,
